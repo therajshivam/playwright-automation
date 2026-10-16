@@ -53,12 +53,17 @@ test.only('Page Playwright Test', async ({page}) => {
     console.log(await page.locator(".card-body a").textContent());
     
 
+
+    
+
+
+    
 })
 
 
 /* 
 Rules for CSS selectors 
-
+ 
 1. If Id is present
     css -> tagname#id (or) #id
 

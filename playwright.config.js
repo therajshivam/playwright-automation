@@ -23,15 +23,6 @@ const config = ({
 module.exports = config;
 
 
-
-
-
-
-
-
-
-
-
 // (
 // // @ts-check
 // import { defineConfig, devices } from '@playwright/test';
