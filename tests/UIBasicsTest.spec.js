@@ -1,7 +1,8 @@
 // @ts-check
 
 // import annotation from playwright module
-const {test, expect} = require('@playwright/test')
+const {test, expect} = require('@playwright/test');
+const { log } = require('node:console');
 
 // syntax for writing test case
 test('Browser Context Declaration Playwright Test', async ({browser}) => {
@@ -30,7 +31,8 @@ test.only('Page Playwright Test', async ({page}) => {
     // await expect(page).toHaveTitle("Google")
 
     const userName = page.locator('#username');
-    const signIn = page.locator('#signInBtn')
+    const signIn = page.locator('#signInBtn');
+    const cardTitles = page.locator(".card-body a");
 
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/"); // new url opened
 
@@ -49,9 +51,22 @@ test.only('Page Playwright Test', async ({page}) => {
     await userName.fill("rahulshettyacademy") 
     await signIn.click();
 
-    // work with locators which extract multiple webelements in page
-    console.log(await page.locator(".card-body a").textContent());
+    // next page
+    // task : grab the title of the first product present on the page.
+    // work with locators which extract multiple webelements from the page
+    console.log(await cardTitles.nth(0).textContent());
+    // or
+    console.log(await cardTitles.first().textContent());
+
+    // task : grab the text of all products in a list format in a single step
+    const allTitles = await cardTitles.allTextContents(); // gives array
+    console.log(allTitles);
+    // note : allTextContents wont work until used textContent because of auto-waiting, as textContent supports auto-waiting while allTextContents dont. (first get the first element then run allTextContents)
+
     
+    
+
+
 
 
     
@@ -59,7 +74,6 @@ test.only('Page Playwright Test', async ({page}) => {
 
     
 })
-
 
 /* 
 Rules for CSS selectors 
