@@ -99,6 +99,7 @@ test.only('UI Controls', async ({page})=>{
     const userName = page.locator('#username');
     const signIn = page.locator('#signInBtn');
     const dropdown = page.locator('select.form-control');
+    const documentLink = page.locator("[href*='documents-request']")
 
     // static dropdown
     await dropdown.selectOption("consult")
@@ -115,7 +116,13 @@ test.only('UI Controls', async ({page})=>{
     await expect (page.locator("#terms")).toBeChecked();
 
     await page.locator("#terms").uncheck()
-    expect (await page.locator("#terms").isChecked()).toBeFalsy() // if there is not any readymade assertions then we can make one by own
+    expect (await page.locator("#terms").isChecked()).toBeFalsy() // if there is not any readymade assertions then we can make one by own.
+    // wherever the action is performed await is written in that scope only.
+
+
+    // to assert that banner is blinking or not
+    // there is no way to assert something like this, so we can check any classname which have property of blinking in it. and here we have to check this class attribute have blinking text or not.
+    await expect(documentLink).toHaveAttribute("class", "blinkingText")
 
 
     
