@@ -23,7 +23,7 @@ test('Browser Context Declaration Playwright Test', async ({browser}) => {
 */
 
 // cleaner view
-test.only('Page Playwright Test', async ({page}) => {
+test('Page Playwright Test', async ({page}) => {
 
     // await page.goto("https://google.com"); // new url opened
     // // get the title and put assertation on it
@@ -93,3 +93,37 @@ Rules for CSS selectors
 5. If needs to write the locator based on text
     text=' '
 */
+
+test.only('UI Controls', async ({page})=>{
+    await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+    const userName = page.locator('#username');
+    const signIn = page.locator('#signInBtn');
+    const dropdown = page.locator('select.form-control');
+
+    // static dropdown
+    await dropdown.selectOption("consult")
+
+    // radio buttons
+    await page.locator(".radiotextsty").last().click();
+    await page.locator("#okayBtn").click();
+    // assertion
+    console.log(await page.locator(".radiotextsty").last().isChecked());
+    await expect ( page.locator(".radiotextsty").last()).toBeChecked();
+    
+    // checkboxes
+    await page.locator("#terms").click()
+    await expect (page.locator("#terms")).toBeChecked();
+
+    await page.locator("#terms").uncheck()
+    expect (await page.locator("#terms").isChecked()).toBeFalsy() // if there is not any readymade assertions then we can make one by own
+
+
+    
+
+
+
+
+    // await page.pause(); //execution will pause before closing the test runner and opens playwright inspector
+
+
+})
