@@ -1,4 +1,4 @@
-// @ts-check
+
 
 // import annotation from playwright module
 const {test, expect} = require('@playwright/test');
@@ -94,10 +94,9 @@ Rules for CSS selectors
     text=' '
 */
 
-test.only('UI Controls', async ({page})=>{
+test('UI Controls', async ({page})=>{
     await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
-    const userName = page.locator('#username');
-    const signIn = page.locator('#signInBtn');
+
     const dropdown = page.locator('select.form-control');
     const documentLink = page.locator("[href*='documents-request']")
 
@@ -124,13 +123,39 @@ test.only('UI Controls', async ({page})=>{
     // there is no way to assert something like this, so we can check any classname which have property of blinking in it. and here we have to check this class attribute have blinking text or not.
     await expect(documentLink).toHaveAttribute("class", "blinkingText")
 
-
-    
-
-
-
-
     // await page.pause(); //execution will pause before closing the test runner and opens playwright inspector
+})
 
+test.only('Handling Child Windows', async ({browser}) => {
 
+    const context = await browser.newContext(); 
+    const page = await context.newPage();
+
+    await page.goto("https://rahulshettyacademy.com/loginpagePractise/");
+
+    const documentLink = page.locator("[href*='documents-request']")
+
+    // opening new page
+    const [newPage] = await Promise.all([
+    context.waitForEvent('page'), // listen for any new page
+    documentLink.click(), // new page is opened
+    ]) ;
+
+    const text = await newPage.locator(".red").textContent()
+    console.log(text);
+
+    // task : take the domain from the child page and put it into the email input in the main page.
+    const arrayText = text.split("@")
+    const domain = arrayText[1].split(" ")[0]
+    console.log(domain);
+
+    await page.locator("#username").fill(domain)
+    console.log(await page.locator("#username").inputValue())
+
+    // Promise.all : where a set of steps to execute parallel(asynchronously), those steps have to wrap in one array.
+    // expectation of this method is that all the promises inside it should be fulfilled, even one promise gets rejected then this will fail
+
+    // diff between textContent() and inputValue()
+    // textContent() will grab the text only if the text is attached to the DOM
+ 
 })
