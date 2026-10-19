@@ -73,3 +73,21 @@ test('checkout flow', async ({ page }) => {   test.setTimeout(60000);   // ...
 - **Assertions** → "Is it there?" → 5s default
 - **Actions** → "Do it now" → 0 default (borrows from test clock)
 - **Test** → "How long can the whole thing run?" → 30s default, the ultimate ceiling
+
+-------
+npx playwright test ClientAppE2E.spec.js  --debug    - inspector      
+npx playwright codegen https://rahulshettyacademy.com/angularpractice/    - codegen recorder     
+npx playwright test --ui      -ui mode   
+npx playwright test tests/ClientAppE2E.spec.js       -runs a particular test     
+npx playwright test    - runs whole test files
+
+Screenshot and debuging
+```javascript
+    reporter:'html',
+    
+    use: {
+    // screenshots and debug
+    screenshot : 'on',
+    trace : 'on'
+  },
+```

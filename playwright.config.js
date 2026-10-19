@@ -23,7 +23,12 @@ const config = ({
 
     // actions global timeout
     actionTimeout : 10 * 1000,
-    navigationTimeout : 30 * 1000
+    navigationTimeout : 30 * 1000,
+
+    // screenshots and debug
+    screenshot : 'on',
+    // trace : 'on'
+    trace : 'retain-on-faliure' // only for fail tests
   },
 
 });
