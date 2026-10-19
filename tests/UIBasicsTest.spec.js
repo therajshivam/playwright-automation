@@ -126,7 +126,7 @@ test('UI Controls', async ({page})=>{
     // await page.pause(); //execution will pause before closing the test runner and opens playwright inspector
 })
 
-test.only('Handling Child Windows', async ({browser}) => {
+test('Handling Child Windows', async ({browser}) => {
 
     const context = await browser.newContext(); 
     const page = await context.newPage();
