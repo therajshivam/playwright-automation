@@ -8,7 +8,10 @@ import { defineConfig, devices } from '@playwright/test';
 const config = ({
   testDir: './tests', // tests which will run
   // we can override the existing config here
+
+  // override test timeout at global level
   timeout: 30 * 1000,
+  // override assertion timeout at global level
   expect: {
     timeout: 5 * 1000,
   },

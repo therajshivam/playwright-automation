@@ -26,3 +26,23 @@ test('Playwright Special Locators', async ({page})=>{
     await page.locator("app-card").filter({hasText: 'Nokia Edge'}).getByRole("button").click()
 })
 
+test('Step level timeout for assertations', async()=>{
+
+    // Understand how Assertions Time out works in Global level & Step level 
+
+    page.goto('https://rahulshettyacademy.com/angularpractice/')
+
+    // previously we have already learnt about few timeouts like waitFor()
+
+    // By default timeouts for :
+        // test is 30 secs
+        // expect assertion is 5 secs 
+
+    // Timeout for Assertions : override by {timeout: 10_000} - step level
+    await expect(page.getByText("Success! The Form has been submitted successfully!.")).toBeVisible({timeout: 10_000})
+
+    // for assetion timeout at global level : 
+        // in the playwright.config.js 
+
+
+})
