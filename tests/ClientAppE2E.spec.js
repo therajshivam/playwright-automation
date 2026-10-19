@@ -82,5 +82,5 @@ test('Client App', async({page})=>{
 
 
     
-    await page.pause()
+    // await page.pause()
 })
