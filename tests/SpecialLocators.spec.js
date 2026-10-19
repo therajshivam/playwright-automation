@@ -13,7 +13,16 @@ test('Playwright Special Locators', async ({page})=>{
     await page.getByLabel("Gender").selectOption("Female")
 
     // getByPlaceholder
-    
+    await page.getByPlaceholder('Password').fill("abc123")
 
+    // getByRole
+    await page.getByRole("button", {name: 'Submit'}).click()
+    await page.getByRole('link', {name: 'Shop'}).click()
 
+    // getByText
+    await page.getByText("Success! The Form has been submitted successfully!.").isVisible()
+
+    // locator filter and chaining
+    await page.locator("app-card").filter({hasText: 'Nokia Edge'}).getByRole("button").click()
 })
+
