@@ -64,7 +64,7 @@ test('Test level timeout assertion timeout', async({page})=>{
     // Test level timeout assertion timeout
     const slowExpect = expect.configure({timeout : 9000}) // test level timeout, save in a const and use it instead of expect put slowExpect
 
-    page.goto('https://rahulshettyacademy.com/angularpractice/')
+    await page.goto('https://rahulshettyacademy.com/angularpractice/')
     await page.getByLabel("Check me out if you Love IceCreams!").click({timeout: 15000}) // action timeout step level
     await page.getByLabel("Employed").check()
     await page.getByLabel("Gender").selectOption("Female")
