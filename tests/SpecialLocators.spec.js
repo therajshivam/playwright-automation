@@ -12,5 +12,8 @@ test('Playwright Special Locators', async ({page})=>{
     // static dropdown
     await page.getByLabel("Gender").selectOption("Female")
 
+    // getByPlaceholder
+    
+
 
 })
