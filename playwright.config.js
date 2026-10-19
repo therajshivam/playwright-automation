@@ -19,7 +19,11 @@ const config = ({
 
   use: {
     browserName: 'chromium',
-    headless: false
+    headless: false,
+
+    // actions global timeout
+    actionTimeout : 10 * 1000,
+    navigationTimeout : 30 * 1000
   },
 
 });
