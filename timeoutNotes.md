@@ -81,6 +81,7 @@ npx playwright test --ui      -ui mode
 npx playwright test tests/ClientAppE2E.spec.js       -runs a particular test     
 npx playwright test    - runs whole test files
 
+
 Screenshot and debuging
 ```javascript
     reporter:'html',
