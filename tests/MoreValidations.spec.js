@@ -14,7 +14,7 @@ test('Hidden Elements', async ({page}) => {
     await expect(page.locator("#displayed-text")).toBeHidden(); // to verify that its in hidden mode.
 })
 
-test.only('Java Popups/Dialog', async ({page}) => {
+test('Java Popups/Dialog', async ({page}) => {
 
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
 
@@ -23,4 +23,13 @@ test.only('Java Popups/Dialog', async ({page}) => {
     // page.on('dialog', dialog => dialog.dismiss()) 
 
     await page.locator('#confirmbtn').click()
+
+    // interacting mouse hover elements 
+    await page.locator("#mousehover").hover()
+
+ })
+
+ test('Handling Frames', async({page}) => {
+    await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
+
  })
