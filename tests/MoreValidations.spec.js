@@ -13,3 +13,14 @@ test('Hidden Elements', async ({page}) => {
     await page.locator("#hide-textbox").click() // now that element is hidden .
     await expect(page.locator("#displayed-text")).toBeHidden(); // to verify that its in hidden mode.
 })
+
+test.only('Java Popups/Dialog', async ({page}) => {
+
+    await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
+
+    // page.on() -- listens for events, it will emit when event ocurred.
+    page.on('dialog', dialog => dialog.accept())
+    // page.on('dialog', dialog => dialog.dismiss()) 
+
+    await page.locator('#confirmbtn').click()
+ })
