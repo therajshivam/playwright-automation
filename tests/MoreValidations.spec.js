@@ -32,4 +32,10 @@ test('Java Popups/Dialog', async ({page}) => {
  test('Handling Frames', async({page}) => {
     await page.goto("https://rahulshettyacademy.com/AutomationPractice/");
 
+    // page.frameLocator() - switch to embedded frames and perform actions on it. it will give a new page object.
+
+    const framesPage = page.frameLocator("#courses-iframe");
+    await framesPage.locator('li a[href*="lifetime-access"]:visible').click();
+    const textCheck = await framesPage.locator("h2 span").textContent();
+    console.log(textCheck);
  })
