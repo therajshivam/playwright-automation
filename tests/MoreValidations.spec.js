@@ -39,3 +39,4 @@ test('Java Popups/Dialog', async ({page}) => {
     const textCheck = await framesPage.locator("h2 span").textContent();
     console.log(textCheck);
  })
+
