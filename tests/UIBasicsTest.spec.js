@@ -62,17 +62,6 @@ test('Page Playwright Test', async ({page}) => {
     const allTitles = await cardTitles.allTextContents(); // gives array
     console.log(allTitles);
     // note : allTextContents wont work until used textContent because of auto-waiting, as textContent supports auto-waiting while allTextContents dont. (first get the first element then run allTextContents)
-
-    
-    
-
-
-
-
-    
-
-
-    
 })
 
 /* 
